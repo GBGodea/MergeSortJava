@@ -1,10 +1,18 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MergeSort {
     public static void main(String[] args) {
-        System.out.println(divide(Arrays.asList("Hello", "World", "Hello", "Abc", "Ab", "ddd", "Aa")));
+        long start = System.currentTimeMillis();
+        List<String> strings = Arrays.asList("Hello", "World", "Hello", "Abc", "Ab", "ddd", "Aa");
+        strings.sort((e1, e2) -> e1.charAt(0) - e2.charAt(0));
+        System.out.println("Java function completed in: " + (System.currentTimeMillis() - start));
+
+        start = System.currentTimeMillis();
+        divide(Arrays.asList("Hello", "World", "Hello", "Abc", "Ab", "ddd", "Aa"));
+        System.out.println("Merge sort function completed in: " + (System.currentTimeMillis() - start));
     }
 
     public static List<String> divide(List<String> listOfStrings) {
